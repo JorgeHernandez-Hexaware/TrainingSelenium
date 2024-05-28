@@ -49,78 +49,85 @@ public class OrangeHRM {
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		
-		//Navigate to PageX
-		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-		takeScreenshot("Before_typing_credentials", driver);
-		
-		//Type credentials to login
-		WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameF));
-		highlightElement(usernameField, driver);
-		usernameField.sendKeys("Admin");
-		
-		WebElement passwordField = driver.findElement(passwordF);
-		highlightElement(passwordField, driver);
-		passwordField.sendKeys("admin123");
-		
-		WebElement loginButton  = driver.findElement(loginBtn);
-		
-		takeScreenshot("After_typing_credentials", driver);
-		highlightElement(loginButton, driver);
-		loginButton.click();
-		
-		
-		//Go to admin		
-		WebElement adminButton = wait.until(ExpectedConditions.visibilityOfElementLocated(adminBtn));
-		adminButton.click();
-		
-		//Search in System Users
-		WebElement userRole = wait.until(ExpectedConditions.visibilityOfElementLocated(UsrRole));
-		userRole.click();
-		userRole.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
-		
-		WebElement status = driver.findElement(statusDiv);
-		status.click();
-		status.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
-		
-		takeScreenshot("Before_searching_User", driver);
-		
-		WebElement searchButton = driver.findElement(SearchBtn);
-		searchButton.click();
-		
-		
-
-		takeScreenshot("After_searching_User", driver);
-		
-		WebElement userBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(btnUsr));
-		userBtn.click();
-		
-		//Editing User
-		takeScreenshot("Before_editing_User", driver);
-		
-		
-		List<WebElement> inptUsername = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(inputUsername));
-		inptUsername.get(0).click();
-		inptUsername.get(0).clear(); 
-		inptUsername.get(0).sendKeys(Keys.CONTROL, "a");
-		inptUsername.get(0).sendKeys("JorgeA");
-		
-		
-		WebElement statDv = wait.until(ExpectedConditions.visibilityOfElementLocated(statDiv));
-		statDv.click();
-		
-		statDv.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
-		
-		takeScreenshot("After_Editing_User", driver);
-		
-		WebElement submitBtn = driver.findElement(sbmBtn);
-		takeScreenshot("Afer_editing_user", driver);
-		submitBtn.click();
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(msgSuccess));
-		takeScreenshot("Validating_edit_user", driver);
+		try {
+			//Navigate to PageX
+			driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+			takeScreenshot("Before_typing_credentials", driver);
 			
-		//Close driver
-		driver.quit();
+			//Type credentials to login
+			WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameF));
+			highlightElement(usernameField, driver);
+			usernameField.sendKeys("Admin");
+			
+			WebElement passwordField = driver.findElement(passwordF);
+			highlightElement(passwordField, driver);
+			passwordField.sendKeys("admin123");
+			
+			WebElement loginButton  = driver.findElement(loginBtn);
+			
+			takeScreenshot("After_typing_credentials", driver);
+			highlightElement(loginButton, driver);
+			loginButton.click();
+			
+			
+			//Go to admin		
+			WebElement adminButton = wait.until(ExpectedConditions.visibilityOfElementLocated(adminBtn));
+			adminButton.click();
+			
+			//Search in System Users
+			WebElement userRole = wait.until(ExpectedConditions.visibilityOfElementLocated(UsrRole));
+			userRole.click();
+			userRole.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
+			
+			WebElement status = driver.findElement(statusDiv);
+			status.click();
+			status.sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
+			
+			takeScreenshot("Before_searching_User", driver);
+			
+			WebElement searchButton = driver.findElement(SearchBtn);
+			searchButton.click();
+			
+			
+
+			takeScreenshot("After_searching_User", driver);
+			
+			WebElement userBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(btnUsr));
+			userBtn.click();
+			
+			//Editing User
+			takeScreenshot("Before_editing_User", driver);
+			
+			
+			List<WebElement> inptUsername = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(inputUsername));
+			inptUsername.get(0).click();
+			inptUsername.get(0).clear(); 
+			inptUsername.get(0).sendKeys(Keys.CONTROL, "a");
+			inptUsername.get(0).sendKeys("JorgeA");
+			
+			
+			WebElement statDv = wait.until(ExpectedConditions.visibilityOfElementLocated(statDiv));
+			statDv.click();
+			
+			statDv.sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
+			
+			takeScreenshot("After_Editing_User", driver);
+			
+			WebElement submitBtn = driver.findElement(sbmBtn);
+			takeScreenshot("Afer_editing_user", driver);
+			submitBtn.click();
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(msgSuccess));
+			takeScreenshot("Validating_edit_user", driver);
+				
+			//Close driver
+			driver.quit();
+		} catch (NullPointerException e) {
+			System.out.println("Error: " + e);
+			driver.quit();
+		}
+		
+		
 	}
 	
 	private static void takeScreenshot(String name, WebDriver driver) throws IOException{
