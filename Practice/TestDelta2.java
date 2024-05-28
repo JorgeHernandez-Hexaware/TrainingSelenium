@@ -59,99 +59,104 @@ public class TestDelta2 {
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		
-		//Navigate to Delta
-		driver.get("https://www.delta.com");
-		
-		//Select Language
-		WebElement modalLang = wait.until(ExpectedConditions.visibilityOfElementLocated(langModal));
-		highlightElement(modalLang, driver);
-		modalLang.click();
-		
-		//Select From Place
-		WebElement fromPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(fromAirpotLine));
-		highlightElement(fromPlace, driver);
-		fromPlace.click();
-		
-		WebElement inpFromPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(inputPlace));
-		highlightElement(inpFromPlace, driver);
-		inpFromPlace.sendKeys("MTY");
-		
-		WebElement fromOptionPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(fromToOption));
-		highlightElement(fromOptionPlace, driver);
-		fromOptionPlace.click();
-		
-		//Select To Place
-		WebElement toPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(toAirportLine));
-		highlightElement(toPlace, driver);
-		toPlace.click();
-		
-		WebElement inpToPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(inputPlace));
-		highlightElement(inpToPlace, driver);
-		inpToPlace.sendKeys("LAX");
-		
-		WebElement toOptionPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(fromToOption));
-		highlightElement(toOptionPlace, driver);
-		toOptionPlace.click();
-		
-		//Select Type Of Flight
-		WebElement tripType = wait.until(ExpectedConditions.visibilityOfElementLocated(selectTripType));
-		highlightElement(tripType, driver);
-		tripType.click();
-		
-		WebElement tripOption = wait.until(ExpectedConditions.visibilityOfElementLocated(tripTypeOption));
-		highlightElement(tripOption, driver);
-		tripOption.click();
-		
-		//Select Date(s)
-		WebElement dateToGo = wait.until(ExpectedConditions.visibilityOfElementLocated(date));
-		highlightElement(dateToGo, driver);
-		dateToGo.click();
-		
-		WebElement selectedDay = wait.until(ExpectedConditions.visibilityOfElementLocated(selectedDate));
-		highlightElement(selectedDay, driver);
-		selectedDay.click();
-		
-		WebElement btnDayDone = wait.until(ExpectedConditions.visibilityOfElementLocated(btnDate));
-		highlightElement(btnDayDone, driver);
-		btnDayDone.click();
-		
-		//Select Number Of Passengers
-		WebElement btnPassengers = wait.until(ExpectedConditions.visibilityOfElementLocated(passengers));
-		highlightElement(btnPassengers, driver);
-		btnPassengers.click();
-		
-		WebElement numPassengersOption =  wait.until(ExpectedConditions.visibilityOfElementLocated(numPassengers));
-		highlightElement(numPassengersOption, driver);
-		numPassengersOption.click();
-		
-		
-		
-		//Search For Flight
-		WebElement btnSearch = wait.until(ExpectedConditions.visibilityOfElementLocated(search));
-		
-		//SS data
-		highlightElement(btnSearch, driver);
-		
-		takeScreenshot("Form_Info_Flight", driver);
+		try {
+			//Navigate to Delta
+			driver.get("https://www.delta.com");
+			
+			//Select Language
+			WebElement modalLang = wait.until(ExpectedConditions.visibilityOfElementLocated(langModal));
+			highlightElement(modalLang, driver);
+			modalLang.click();
+			
+			//Select From Place
+			WebElement fromPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(fromAirpotLine));
+			highlightElement(fromPlace, driver);
+			fromPlace.click();
+			
+			WebElement inpFromPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(inputPlace));
+			highlightElement(inpFromPlace, driver);
+			inpFromPlace.sendKeys("MTY");
+			
+			WebElement fromOptionPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(fromToOption));
+			highlightElement(fromOptionPlace, driver);
+			fromOptionPlace.click();
+			
+			//Select To Place
+			WebElement toPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(toAirportLine));
+			highlightElement(toPlace, driver);
+			toPlace.click();
+			
+			WebElement inpToPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(inputPlace));
+			highlightElement(inpToPlace, driver);
+			inpToPlace.sendKeys("LAX");
+			
+			WebElement toOptionPlace = wait.until(ExpectedConditions.visibilityOfElementLocated(fromToOption));
+			highlightElement(toOptionPlace, driver);
+			toOptionPlace.click();
+			
+			//Select Type Of Flight
+			WebElement tripType = wait.until(ExpectedConditions.visibilityOfElementLocated(selectTripType));
+			highlightElement(tripType, driver);
+			tripType.click();
+			
+			WebElement tripOption = wait.until(ExpectedConditions.visibilityOfElementLocated(tripTypeOption));
+			highlightElement(tripOption, driver);
+			tripOption.click();
+			
+			//Select Date(s)
+			WebElement dateToGo = wait.until(ExpectedConditions.visibilityOfElementLocated(date));
+			highlightElement(dateToGo, driver);
+			dateToGo.click();
+			
+			WebElement selectedDay = wait.until(ExpectedConditions.visibilityOfElementLocated(selectedDate));
+			highlightElement(selectedDay, driver);
+			selectedDay.click();
+			
+			WebElement btnDayDone = wait.until(ExpectedConditions.visibilityOfElementLocated(btnDate));
+			highlightElement(btnDayDone, driver);
+			btnDayDone.click();
+			
+			//Select Number Of Passengers
+			WebElement btnPassengers = wait.until(ExpectedConditions.visibilityOfElementLocated(passengers));
+			highlightElement(btnPassengers, driver);
+			btnPassengers.click();
+			
+			WebElement numPassengersOption =  wait.until(ExpectedConditions.visibilityOfElementLocated(numPassengers));
+			highlightElement(numPassengersOption, driver);
+			numPassengersOption.click();
+			
+			
+			
+			//Search For Flight
+			WebElement btnSearch = wait.until(ExpectedConditions.visibilityOfElementLocated(search));
+			
+			//SS data
+			highlightElement(btnSearch, driver);
+			
+			takeScreenshot("Form_Info_Flight", driver);
 
-		btnSearch.click();
-		
-		//Select Price
-		WebElement priceClassicMain = wait.until(ExpectedConditions.visibilityOfElementLocated(priceCM));
-		highlightElement(priceClassicMain, driver);
-		priceClassicMain.click();
-		
-		
-		//Continue??
-		
-		
-		//Fill Form
-		
-		//Incompleto debido a cambios 
-		
-		Thread.sleep(6000);
-		
-		driver.quit();
+			btnSearch.click();
+			
+			//Select Price
+			WebElement priceClassicMain = wait.until(ExpectedConditions.visibilityOfElementLocated(priceCM));
+			highlightElement(priceClassicMain, driver);
+			priceClassicMain.click();
+			
+			
+			//Continue
+			
+			
+			//Fill Form
+			
+			
+			Thread.sleep(6000);
+			
+			//Close Driver
+			driver.quit();
+		} catch (NullPointerException e) {
+			System.out.println("Error: " + e);
+			driver.quit();
+		}
 
 	}
 	
