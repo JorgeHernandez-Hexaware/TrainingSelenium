@@ -69,147 +69,155 @@ public class TestDelta {
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
-		//Navigate to Page
-		driver.get("https://www.delta.com");
-		
-		//Select Language
-		WebElement modalLang = wait.until(ExpectedConditions.visibilityOfElementLocated(langModal));
-		highlightElement(modalLang, driver);
-		modalLang.click();
-				
-		//Go to Comprar Hoteles
-		
-		//Scroll to get element visible
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("scroll(0, 250);");
-		
-		//Get the identifier of current window
-		String originalWindow = driver.getWindowHandle();
-		
-		WebElement hoteles = wait.until(ExpectedConditions.visibilityOfElementLocated(hotel));
-		highlightElement(hoteles, driver);
-		hoteles.click();
-				
-		//Switch to the recent opened window
-		for(String window: driver.getWindowHandles()){
-			if(!originalWindow.contentEquals(window)){
-				driver.switchTo().window(window);
-				break;
+		try {
+			//Navigate to Page
+			driver.get("https://www.delta.com");
+			
+			//Select Language
+			WebElement modalLang = wait.until(ExpectedConditions.visibilityOfElementLocated(langModal));
+			highlightElement(modalLang, driver);
+			modalLang.click();
+					
+			//Go to Comprar Hoteles
+			
+			//Scroll to get element visible
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("scroll(0, 250);");
+			
+			//Get the identifier of current window
+			String originalWindow = driver.getWindowHandle();
+			
+			WebElement hoteles = wait.until(ExpectedConditions.visibilityOfElementLocated(hotel));
+			highlightElement(hoteles, driver);
+			hoteles.click();
+					
+			//Switch to the recent opened window
+			for(String window: driver.getWindowHandles()){
+				if(!originalWindow.contentEquals(window)){
+					driver.switchTo().window(window);
+					break;
+				}
 			}
-		}
-		
-		//Get the identifier of current window
-		String secondWindow = driver.getWindowHandle();
-		
-		WebElement btnGoTo = wait.until(ExpectedConditions.visibilityOfElementLocated(btnGoingto));
-		btnGoTo.click();
-		WebElement inputGoTo = wait.until(ExpectedConditions.visibilityOfElementLocated(inpGoTo));
-		inputGoTo.sendKeys("Guadalajara");
-		WebElement optGoTo = wait.until(ExpectedConditions.visibilityOfElementLocated(optionGoTo));
-		highlightElement(btnGoTo, driver);
-		optGoTo.click();
-		
-		WebElement btnDateCheckIn = wait.until(ExpectedConditions.visibilityOfElementLocated(btnCheckIn));
-		highlightElement(btnDateCheckIn, driver);
-		btnDateCheckIn.click();
-		
-		WebElement d1 = wait.until(ExpectedConditions.visibilityOfElementLocated(day1));
-		highlightElement(d1, driver);
-		d1.click();
-		
-		WebElement btnDone = wait.until(ExpectedConditions.visibilityOfElementLocated(dayBtnDone));
-		highlightElement(btnDone, driver);
-		btnDone.click();
-		
-		WebElement btnDateCheckOut = wait.until(ExpectedConditions.visibilityOfElementLocated(btnCheckOut));
-		highlightElement(btnDateCheckOut, driver);
-		btnDateCheckOut.click();
-		
-		WebElement d2 = wait.until(ExpectedConditions.visibilityOfElementLocated(day2));
-		highlightElement(d2, driver);
-		d2.click();
-		
-		WebElement btnDone2 = wait.until(ExpectedConditions.visibilityOfElementLocated(dayBtnDone));
-		highlightElement(btnDone2, driver);
-		btnDone2.click();
-		
-		WebElement searchStay = wait.until(ExpectedConditions.visibilityOfElementLocated(search));
-		highlightElement(searchStay, driver);
-		searchStay.click();
-		
-		
-		WebElement selectHotel = wait.until(ExpectedConditions.visibilityOfElementLocated(selectedHotel));
-		highlightElement(selectHotel, driver);
-		takeScreenshot("List of hotels", driver);
-		selectHotel.click();
-		
-		//Get the identifier of current window
-		Set<String> handles = driver.getWindowHandles();
+			
+			//Get the identifier of current window
+			String secondWindow = driver.getWindowHandle();
+			
+			WebElement btnGoTo = wait.until(ExpectedConditions.visibilityOfElementLocated(btnGoingto));
+			btnGoTo.click();
+			WebElement inputGoTo = wait.until(ExpectedConditions.visibilityOfElementLocated(inpGoTo));
+			inputGoTo.sendKeys("Guadalajara");
+			WebElement optGoTo = wait.until(ExpectedConditions.visibilityOfElementLocated(optionGoTo));
+			highlightElement(btnGoTo, driver);
+			optGoTo.click();
+			
+			WebElement btnDateCheckIn = wait.until(ExpectedConditions.visibilityOfElementLocated(btnCheckIn));
+			highlightElement(btnDateCheckIn, driver);
+			btnDateCheckIn.click();
+			
+			WebElement d1 = wait.until(ExpectedConditions.visibilityOfElementLocated(day1));
+			highlightElement(d1, driver);
+			d1.click();
+			
+			WebElement btnDone = wait.until(ExpectedConditions.visibilityOfElementLocated(dayBtnDone));
+			highlightElement(btnDone, driver);
+			btnDone.click();
+			
+			WebElement btnDateCheckOut = wait.until(ExpectedConditions.visibilityOfElementLocated(btnCheckOut));
+			highlightElement(btnDateCheckOut, driver);
+			btnDateCheckOut.click();
+			
+			WebElement d2 = wait.until(ExpectedConditions.visibilityOfElementLocated(day2));
+			highlightElement(d2, driver);
+			d2.click();
+			
+			WebElement btnDone2 = wait.until(ExpectedConditions.visibilityOfElementLocated(dayBtnDone));
+			highlightElement(btnDone2, driver);
+			btnDone2.click();
+			
+			WebElement searchStay = wait.until(ExpectedConditions.visibilityOfElementLocated(search));
+			highlightElement(searchStay, driver);
+			searchStay.click();
+			
+			
+			WebElement selectHotel = wait.until(ExpectedConditions.visibilityOfElementLocated(selectedHotel));
+			highlightElement(selectHotel, driver);
+			takeScreenshot("List of hotels", driver);
+			selectHotel.click();
+			
+			//Get the identifier of current window
+			Set<String> handles = driver.getWindowHandles();
 
-		//Get 3rd window
-		List<String> handleList = new ArrayList<>(handles);
-		
-		String thirdWindow = handleList.get(handleList.size()-1);
-		
-		driver.switchTo().window(thirdWindow);
-		
-		WebElement btnReserveRoom = wait.until(ExpectedConditions.visibilityOfElementLocated(btnReserveRoomList));
-		highlightElement(btnReserveRoom, driver);
-		btnReserveRoom.click();
-		
-		WebElement reserveRoom = wait.until(ExpectedConditions.visibilityOfElementLocated(reserve));
-		highlightElement(reserveRoom, driver);
-		reserveRoom.click();
-		
-		WebElement payAyProperty = wait.until(ExpectedConditions.visibilityOfElementLocated(payProperty));
-		highlightElement(payAyProperty, driver);
-		payAyProperty.click();
-		
-		WebElement firstNameInp = wait.until(ExpectedConditions.visibilityOfElementLocated(firstName));
-		highlightElement(firstNameInp, driver);
-		firstNameInp.sendKeys("Jorge");
-		
-		WebElement lastNameInp = wait.until(ExpectedConditions.visibilityOfElementLocated(lastName));
-		highlightElement(lastNameInp, driver);
-		lastNameInp.sendKeys("Hernandez");
-		
-		WebElement emailInp = wait.until(ExpectedConditions.visibilityOfElementLocated(email));
-		highlightElement(emailInp, driver);
-		emailInp.sendKeys("test@test.com");
-		
-		WebElement phoneInp = wait.until(ExpectedConditions.visibilityOfElementLocated(phone));
-		highlightElement(phoneInp, driver);
-		phoneInp.sendKeys("8441231234");
-		
-		//Validate data in checkout
-		String valCheckIn = "Mon, Jun 10";
-		String valChecOut = "Tue, Jun 11";
-		String valTotalDue = "$0.00";
-		
-		WebElement checkInVal = wait.until(ExpectedConditions.visibilityOfElementLocated(checkInDate));
-		if(checkInVal.getText().equalsIgnoreCase(valCheckIn)) {
-			highlightElement(checkInVal, driver);
-			System.out.println("Check-in Date Validated");
+			//Get 3rd window
+			List<String> handleList = new ArrayList<>(handles);
+			
+			String thirdWindow = handleList.get(handleList.size()-1);
+			
+			driver.switchTo().window(thirdWindow);
+			
+			WebElement btnReserveRoom = wait.until(ExpectedConditions.visibilityOfElementLocated(btnReserveRoomList));
+			highlightElement(btnReserveRoom, driver);
+			btnReserveRoom.click();
+			
+			WebElement reserveRoom = wait.until(ExpectedConditions.visibilityOfElementLocated(reserve));
+			highlightElement(reserveRoom, driver);
+			reserveRoom.click();
+			
+			WebElement payAyProperty = wait.until(ExpectedConditions.visibilityOfElementLocated(payProperty));
+			highlightElement(payAyProperty, driver);
+			payAyProperty.click();
+			
+			WebElement firstNameInp = wait.until(ExpectedConditions.visibilityOfElementLocated(firstName));
+			highlightElement(firstNameInp, driver);
+			firstNameInp.sendKeys("Jorge");
+			
+			WebElement lastNameInp = wait.until(ExpectedConditions.visibilityOfElementLocated(lastName));
+			highlightElement(lastNameInp, driver);
+			lastNameInp.sendKeys("Hernandez");
+			
+			WebElement emailInp = wait.until(ExpectedConditions.visibilityOfElementLocated(email));
+			highlightElement(emailInp, driver);
+			emailInp.sendKeys("test@test.com");
+			
+			WebElement phoneInp = wait.until(ExpectedConditions.visibilityOfElementLocated(phone));
+			highlightElement(phoneInp, driver);
+			phoneInp.sendKeys("8441231234");
+			
+			//Validate data in checkout
+			String valCheckIn = "Mon, Jun 10";
+			String valChecOut = "Tue, Jun 11";
+			String valTotalDue = "$0.00";
+			
+			WebElement checkInVal = wait.until(ExpectedConditions.visibilityOfElementLocated(checkInDate));
+			if(checkInVal.getText().equalsIgnoreCase(valCheckIn)) {
+				highlightElement(checkInVal, driver);
+				System.out.println("Check-in Date Validated");
+			}
+			
+			WebElement checkOutVal = wait.until(ExpectedConditions.visibilityOfElementLocated(checkOutDate));
+			if(checkOutVal.getText().equalsIgnoreCase(valChecOut)) {
+				highlightElement(checkOutVal, driver);
+				System.out.println("Check-out Date Validated");
+			}
+			
+			//Scroll to get element visible
+			jse.executeScript("scroll(0, 250);");
+			
+			WebElement totalDueval = wait.until(ExpectedConditions.visibilityOfElementLocated(totalDue));
+			if(totalDueval.getText().equalsIgnoreCase(valTotalDue)) {
+				highlightElement(totalDueval, driver);
+				System.out.println("Total Due Today Validated");
+			}
+			
+			takeScreenshot("Checkout Booking Hotel", driver);
+			
+			//Close Driver
+			driver.quit();
+		} catch (NullPointerException e) {
+			System.out.println("Error: " + e);
+			driver.quit();
 		}
 		
-		WebElement checkOutVal = wait.until(ExpectedConditions.visibilityOfElementLocated(checkOutDate));
-		if(checkOutVal.getText().equalsIgnoreCase(valChecOut)) {
-			highlightElement(checkOutVal, driver);
-			System.out.println("Check-out Date Validated");
-		}
 		
-		//Scroll to get element visible
-		jse.executeScript("scroll(0, 250);");
-		
-		WebElement totalDueval = wait.until(ExpectedConditions.visibilityOfElementLocated(totalDue));
-		if(totalDueval.getText().equalsIgnoreCase(valTotalDue)) {
-			highlightElement(totalDueval, driver);
-			System.out.println("Total Due Today Validated");
-		}
-		
-		takeScreenshot("Checkout Booking Hotel", driver);
-				
-		driver.quit();
 	}
 	
 	private static void takeScreenshot(String name, WebDriver driver) throws IOException{
