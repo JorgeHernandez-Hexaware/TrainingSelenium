@@ -151,13 +151,12 @@ public class TestDelta2 {
 			
 			Thread.sleep(6000);
 			
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+			takeScreenshot("Error", driver);
+		}
 			//Close Driver
 			driver.quit();
-		} catch (NullPointerException e) {
-			System.out.println("Error: " + e);
-			driver.quit();
-		}
-
 	}
 	
 	private static void takeScreenshot(String name, WebDriver driver) throws IOException{
