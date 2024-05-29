@@ -120,14 +120,13 @@ public class OrangeHRM {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(msgSuccess));
 			takeScreenshot("Validating_edit_user", driver);
 				
+			
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+			takeScreenshot("Error", driver);
+		}
 			//Close driver
 			driver.quit();
-		} catch (NullPointerException e) {
-			System.out.println("Error: " + e);
-			driver.quit();
-		}
-		
-		
 	}
 	
 	private static void takeScreenshot(String name, WebDriver driver) throws IOException{
