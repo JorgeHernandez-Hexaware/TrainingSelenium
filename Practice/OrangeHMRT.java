@@ -142,17 +142,13 @@ public class OrangeHMRT {
 			 takeScreenshot("Validating_create_timesheet", driver);
 			 
 			 takeScreenshot("Validating_total_hours", driver);
-			 
-			
+			 			
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+			takeScreenshot("Error", driver);
+		}
 			//Close driver
 			driver.quit();
-			
-		} catch (NullPointerException e) {
-			System.out.println("Error: " + e);
-			driver.quit();
-		}
-		
-		
 	}
 	
 	private static void takeScreenshot(String name, WebDriver driver) throws IOException{
